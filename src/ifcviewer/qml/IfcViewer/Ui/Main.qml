@@ -13,10 +13,37 @@ ApplicationWindow {
     title: qsTr("IfcViewer")
     visible: true
 
-    Text {
-        id: txt
+    SplitView {
+        anchors.fill: parent
 
-        anchors.centerIn: rootWindow
-        text: "test"
+        Rectangle {
+            id: viewLeft
+
+            implicitWidth: rootWindow.width / 4
+            SplitView.maximumWidth: 400
+            Label {
+                text: "View 1"
+                anchors.centerIn: parent
+            }
+        }
+        Rectangle {
+            id: viewCenter
+
+            SplitView.minimumWidth: 50
+            SplitView.fillWidth: true
+            Label {
+                text: "View 2"
+                anchors.centerIn: viewCenter
+            }
+        }
+        Rectangle {
+            id: viewRight
+
+            implicitWidth: rootWindow.width / 4
+            Label {
+                text: "View 3"
+                anchors.centerIn: viewRight
+            }
+        }
     }
 }
